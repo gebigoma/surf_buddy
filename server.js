@@ -58,7 +58,7 @@ app.use(ejsLayouts)
 
 // router
 app.get('/', (req, res) => {
-  res.send({message: "GREAT SUCCESS"})
+  res.render('index')
 })
 
 app.use('/api/users', usersRouter)
