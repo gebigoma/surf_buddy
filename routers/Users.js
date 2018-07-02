@@ -1,12 +1,12 @@
 const
  express = require('express'),
- usersRouter = new express.Router(),
- passport = require('passport')
+ passport = require('passport'),
+ usersRouter = new express.Router()
  
 
 // render login view
 usersRouter.get('/login', (req, res) => {
- res.render('login')
+    res.render('login')
 })
 
 usersRouter.post('/login', passport.authenticate('local-login', {
@@ -25,11 +25,11 @@ usersRouter.post('/signup', passport.authenticate('local-signup', {
 }))
 
 usersRouter.get('/profile', isLoggedIn, (req, res) => {
- Post.find({ _by: req.user._id}, (err, userPosts) => {
-   res.render('profile', { user: req.user, posts: userPosts })
+//  Post.find({ _by: req.user._id}, (err, userPosts) => {
+   res.render('profile', { user: req.user })
  })
  // res.render('profile', { user: req.user }, { message: req.flash('profileMessage')})
-})
+// })
 
 usersRouter.get('/logout', (req, res) => {
  req.logout()
@@ -41,6 +41,7 @@ usersRouter.get('/profile/edit', isLoggedIn, (req, res) => {
 })
 
 usersRouter.patch('/profile', isLoggedIn, (req, res) => {
+    console.log("HIT")
  if(!req.body.password) delete req.body.password
  Object.assign(req.user, req.body)
  req.user.save((err, updatedUser) => {
