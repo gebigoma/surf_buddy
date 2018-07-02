@@ -2,8 +2,8 @@ const
     express = require('express'),
     passport = require('passport'),
     usersRouter = express.Router(),
-    User = require('../controllers/UsersCtrl')
+    users = require('../controllers/UsersCtrl')
 
-usersRouter.get('/signup', User.create) 
+usersRouter.get('/signup', users.new) 
 
 module.exports = usersRouter;
