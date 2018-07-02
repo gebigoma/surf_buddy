@@ -6,7 +6,7 @@ const
 
 // render login view
 usersRouter.get('/login', (req, res) => {
- res.render('login', { message: req.flash('loginMessage') })
+ res.render('login')
 })
 
 usersRouter.post('/login', passport.authenticate('local-login', {
