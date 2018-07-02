@@ -2,6 +2,7 @@ require('dotenv').config()
 
 const 
   express = require('express'), 
+  methodOverride = require('method-override'),
   app = express(),
   ejs = require('ejs'),
   ejsLayouts = require('express-ejs-layouts'),
@@ -15,28 +16,33 @@ const
   passportConfig = require('./config/passport.js'),
   usersRouter = require('./routers/Users')
 
-mongoose.connect(process.env.MONGODB_URI, (err) => {
-  console.log(err || "Connected to DB!")
-})
-
-//middleware 
-app.use(cookieParser())
-app.use(logger('dev'))
-
-
-// environment port
-const 
   PORT = process.env.PORT,
   mongoConnectionString = process.env.MONGODB_URI
+
+mongoose.connect(process.env.MONGODB_URI, (err) => {
+  console.log(err || "Connected to DB!")
+});
 
 // mongoose connection
 const store = new MongoDBStore({
   uri: mongoConnectionString,
   collection: 'sessions'
 })
+
+// ejs configuration
+app.set('view engine', 'ejs')
+
+//middleware 
+app.use(ejsLayouts)
+app.use(cookieParser())
+app.use(logger('dev'))
+app.use(express.urlencoded({ extended: false }))
+app.use(methodOverride('_method'))
+
+
 //sessions 
 app.use(session({
-  secret: "Shhh",
+  secret: "Poop",
   cookie: {maxAge: 60000000 },
   resave: true,
   saveUninitialized: false,
@@ -52,16 +58,13 @@ app.use((req, res, next) => {
   next()
 })
 
-// ejs configuration
-app.set('view engine', 'ejs')
-app.use(ejsLayouts)
-
 // router
+app.use('/users', usersRouter)
+
+// 
 app.get('/', (req, res) => {
   res.render('index')
 })
-
-app.use('/api/users', usersRouter)
 
 app.listen(PORT, (err) => {
   console.log(err || `Server running on ${PORT}.`)
