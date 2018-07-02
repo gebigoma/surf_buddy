@@ -19,3 +19,23 @@ exports.show = (req, res) => {
     })
 } 
 
+exports.edit = (req, res) => {
+    User.findById(req.params.id, (err, userFromDB) => {
+      if (err) {
+        res.render('Edit', { status: "FAIL", payload: err })
+      } else {
+        res.render('Edit', {status: "SUCCESS", payload: userFromDB })
+      }
+    })
+  }
+  
+  exports.update = (req, res) => {
+    let { id } = req.params
+    User.findByIdAndUpdate(id, { $set: req.body }, {new: true }, (err, userFromDB) => {
+      if (err) {
+        res.redirect('/users')
+      } else {
+        res.render('User', {status: "SUCCESS", payload: userFromDB })
+      }
+    })
+  }
