@@ -19,6 +19,33 @@ exports.show = (req, res) => {
     })
 } 
 
+exports.create = (req, res) => {
+    User.create(req.body, (err, newUser) => {
+        if(err) {
+            res.json({status: "Failed", err})
+        }
+        else {
+            res.redirect("/users")
+        }
+    })
+}
+
+exports.delete = (req, res) => {
+    let { id } = req.params;
+    User.findByIdAndRemove(id, (err, deletedUser) => {
+        if (err){
+            res.redirect('/users');
+        }
+        else {
+            res.redirect('/users');
+        }
+    })
+}
+
+exports.newUser = (req, res) => {
+    res.render('new')
+}
+
 exports.edit = (req, res) => {
     User.findById(req.params.id, (err, userFromDB) => {
       if (err) {
@@ -39,3 +66,4 @@ exports.edit = (req, res) => {
       }
     })
   }
+
