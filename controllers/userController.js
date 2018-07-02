@@ -1,20 +1,20 @@
 const User = require('../models/User')
 
 exports.index = (req, res) => {
-    Host.find({}, (err, hosts) => {
+    User.find({}, (err, users) => {
         if(err){
-            res.render('Hosts', {status: "FAIL", payload: err})
+            res.render('Users', {status: "FAIL", payload: err})
         }else{
-            res.render('Hosts', {status: "SUCCESS", payload: hosts})
+            res.render('Users', {status: "SUCCESS", payload: users})
         }
     })
 }
 exports.show = (req, res) => {
-    Host.findById(req.params.id, (err, host) => {
+    User.findById(req.params.id, (err, user) => {
         if(err){
             res.send(err)
         } else {
-            res.render('Host', {status: "SUCCESS", payload: host})
+            res.render('User', {status: "SUCCESS", payload: user})
         }
     })
 } 
