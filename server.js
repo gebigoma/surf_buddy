@@ -1,4 +1,5 @@
-//test, test-Andrew
+require('dotenv').config()
+
 const 
   express = require('express'), 
   app = express(),
@@ -11,14 +12,15 @@ const
   session = require('express-session'),
   MongoDBStore = require('connect-mongodb-session')(session), 
   passport = require('passport'), 
-  passportConfig = require('./config/passport.js'),
-  PORT = 3000
+  passportConfig = require('./config/passport.js')
 
 //middleware 
 app.use(cookieParser())
 app.use(logger('dev'))
 // environment port
-
+const 
+  PORT = process.env.PORT,
+  mongoConnectionString = process.env.MONGODB_URI
 // mongoose connection
 const store = new MongoDBStore({
   uri: mongoConnectionString,
