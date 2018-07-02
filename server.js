@@ -1,4 +1,5 @@
 require('dotenv').config()
+
 const 
   express = require('express'), 
   app = express(),
@@ -11,15 +12,23 @@ const
   session = require('express-session'),
   MongoDBStore = require('connect-mongodb-session')(session), 
   passport = require('passport'), 
-  passportConfig = require('./config/passport.js')
+  passportConfig = require('./config/passport.js'),
+  usersRouter = require('./routers/Users')
+
+mongoose.connect(process.env.MONGODB_URI, (err) => {
+  console.log(err || "Connected to DB!")
+})
 
 //middleware 
 app.use(cookieParser())
 app.use(logger('dev'))
+
+
 // environment port
 const 
   PORT = process.env.PORT,
   mongoConnectionString = process.env.MONGODB_URI
+
 // mongoose connection
 const store = new MongoDBStore({
   uri: mongoConnectionString,
@@ -42,6 +51,11 @@ app.set('view engine', 'ejs')
 app.use(ejsLayouts)
 
 // router
+app.get('/', (req, res) => {
+  res.send({message: "GREAT SUCCESS"})
+})
+
+app.use('/api/users', usersRouter)
 
 app.listen(PORT, (err) => {
   console.log(err || `Server running on ${PORT}.`)
