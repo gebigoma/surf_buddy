@@ -91,18 +91,13 @@ app.get('/spots', (req, res) => {
   })
 })
 
-  app.get('/spit-cast-test', (req, res) => {
+  app.get('/search', (req, res) => {
     res.render('spitcastTest')
   })
 
   app.get('/spots/search', (req, res) => {
     geocoder.geocode(req.query.location, function ( err, data ) {
       const coordinates = data.results[0].geometry.location
-      // 2. using the data you get back (lat and lng), 
-      // make an api call to the search endpoint, plugging in the lat / lng:
-      
-      // GOOGLE API KEY: &key=${googleApiKey}
-      
       const apiUrl=`http://api.spitcast.com/api/spot-forecast/search?distance=20&longitude=${coordinates.lng}&latitude=${coordinates.lat}`
       apiClient({ method: 'get', url: apiUrl}).then((apiResponse) => {
         res.json(apiResponse.data)
