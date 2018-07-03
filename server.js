@@ -16,9 +16,11 @@ const
   MongoDBStore = require('connect-mongodb-session')(session), 
   passport = require('passport'), 
   passportConfig = require('./config/passport.js'),
-  usersRouter = require('./routers/Users')
+  usersRouter = require('./routers/Users'), 
+  geocoder = require('geocoder')
 
 const apiUrl = process.env.API_URL
+const googleApiKey = process.env.GOOGLE_API_KEY
 
 PORT = process.env.PORT,
 mongoConnectionString = process.env.MONGODB_URI
@@ -82,21 +84,31 @@ app.get('/spots', (req, res) => {
   res.render('spots')
 })
 // spitcast api
-app.get('/spitcast', (req, res) => {
+app.get('/spots', (req, res) => {
   console.log("Request received...")
   apiClient({ method: 'get', url: apiUrl}).then((apiResponse) => {
-    let results = ''
-    apiResponse.data.forEach((r) => {
-      const spotName = r.spot_name
-      results += `<li>
-        Spot Name: ${spotName} // 
-        <em>County Name: </em>${r.county_name} // 
-        Latitude: ${r.latitude}
-        Longitude: ${r.longitude}
-        </li>`
-    })
-    res.send(results)
-    })
+    const spots = apiResponse.data
+    res.render('spots/index', {spots: spots})
+  })
+})
+
+  app.get('/spit-cast-test', (req, res) => {
+    res.render('spitcastTest')
+  })
+
+  app.get('/spots/search', (req, res) => {
+    geocoder.geocode(req.query.location, function ( err, data ) {
+      const coordinates = data.results[0].geometry.location
+      // 2. using the data you get back (lat and lng), 
+      // make an api call to the search endpoint, plugging in the lat / lng:
+      
+      // GOOGLE API KEY: &key=${googleApiKey}
+      
+      const apiUrl=`http://api.spitcast.com/api/spot-forecast/search?distance=20&longitude=${coordinates.lng}&latitude=${coordinates.lat}`
+      apiClient({ method: 'get', url: apiUrl}).then((apiResponse) => {
+        res.json(apiResponse.data)
+      })
+    });
   })
 
 app.listen(PORT, (err) => {

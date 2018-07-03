@@ -1,0 +1,7 @@
+<h1>All da spotz</h1>
+
+<% if (spots.length > 0) %>
+<% spots.forEach(s => { %> 
+  <li><%= s.spot_name %></li>
+  <li><%= s.county_name %></li>
+<% }) %> 
