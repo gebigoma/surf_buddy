@@ -68,6 +68,15 @@ app.use('/users', usersRouter)
 // root 
 app.get('/', (req, res) => {
   res.render('index')
+}) 
+app.get('/about', (req, res) => {
+  res.render('about')
+}) 
+app.get('/faq', (req, res) => {
+  res.render('faq')
+}) 
+app.get('/contact', (req, res) => {
+  res.render('contact')
 })
 // spitcast api
 app.get('/spitcast', (req, res) => {
