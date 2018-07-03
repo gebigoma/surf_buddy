@@ -1,21 +1,38 @@
-<div class="col-sm-6 offset-md-3">
-    <h1>Sign Up</h1>
-        <form method="post" action="/users/signup">
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" name="name">
+<div class="ui three column vertically padded grid">
+    <div class="row"></div>
+    <div class="row"></div>
+    <div class="row"></div>
+    <div class="row"></div>
+    <div class="row"></div>
+    
+    <div class=" three column row">
+        <div class="column"></div>
+        <div class="column">
+            <h1>Sign Up</h1>
+            <form class="ui form" method="post" action="/users/signup">
+                <div class="field">
+                    <label>Username</label>
+                    <input type="text" name="name" placeholder="name">
+                </div>
+                <div class="field">
+                    <label>Email</label>
+                    <input type="email" name="email" placeholder="Email">
+                </div>
+                <div class="field">
+                    <label>Password</label>
+                    <input type="password" name="password" placeholder="Password">
+                </div>
+                <button type="submit" class="ui button">Submit</button>
+            </form>
         </div>
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" name="email">
+        <div class="column"></div>
+    </div>
+    <div class=" three column row">
+        <div class="column"></div>
+        <div class="center aligned column">
+            <p>Already have an account?  <a href="/users/login">Log In</a></p>
+            <p>Return to <a href="/">homepage</a></p>
         </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="password">
-        </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-        <hr>
-        <p>Or, <a href="/users/login">Log In</a></p>
-        <p>Go back <a href="/">home</a>.</p>
+        <div class="column"></div>
+    </div>
 </div>
