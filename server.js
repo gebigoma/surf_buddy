@@ -6,6 +6,8 @@ const
   app = express(),
   ejs = require('ejs'),
   ejsLayouts = require('express-ejs-layouts'),
+  axios = require('axios'),
+  apiClient = axios.create(),
   mongoose = require('mongoose'),
   flash = require('connect-flash'),
   logger = require('morgan'), 
@@ -16,8 +18,10 @@ const
   passportConfig = require('./config/passport.js'),
   usersRouter = require('./routers/Users')
 
-  PORT = process.env.PORT,
-  mongoConnectionString = process.env.MONGODB_URI
+const apiUrl = process.env.API_URL
+
+PORT = process.env.PORT,
+mongoConnectionString = process.env.MONGODB_URI
 
 mongoose.connect(process.env.MONGODB_URI, (err) => {
   console.log(err || "Connected to DB!")
@@ -61,10 +65,28 @@ app.use((req, res, next) => {
 // router
 app.use('/users', usersRouter)
 
-// 
+
+// root 
 app.get('/', (req, res) => {
   res.render('index')
 })
+// spitcast api
+app.get('/spitcast', (req, res) => {
+  console.log("Request received...")
+  apiClient({ method: 'get', url: apiUrl}).then((apiResponse) => {
+    let results = ''
+    apiResponse.data.forEach((r) => {
+      const spotName = r.spot_name
+      results += `<li>
+        Spot Name: ${spotName} // 
+        <em>County Name: </em>${r.county_name} // 
+        Latitude: ${r.latitude}
+        Longitude: ${r.longitude}
+        </li>`
+    })
+    res.send(results)
+    })
+  })
 
 app.listen(PORT, (err) => {
   console.log(err || `Server running on ${PORT}.`)
