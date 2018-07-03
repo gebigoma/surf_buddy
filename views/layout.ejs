@@ -3,12 +3,15 @@
 <head>
     <title>Surf Buddy</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"> -->
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> 
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.2/semantic.min.css" integrity="sha256-Z8Bv3UrxpRsWTfTPIjCojw5CdRNYSPw3TyxoU8WZSrM=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.2/semantic.min.js" integrity="sha256-/P4bJXh+K+kZ7M5aKUKxAcvN8105oYfKkQ2cgwVZ8r4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../public/css/main.css">
 </head>
 <body>
     <% if(isLoggedIn) { %>
@@ -18,6 +21,7 @@
         <a href='/users/login'>Log In</a>
         <a href='/users/signup'>Sign Up</a>
     <% } %>
+    
     <div class="container">
         <%- body %> 
     </div>
