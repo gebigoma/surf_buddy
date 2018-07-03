@@ -16,8 +16,11 @@ const
   MongoDBStore = require('connect-mongodb-session')(session), 
   passport = require('passport'), 
   passportConfig = require('./config/passport.js'),
+  usersRouter = require('./routers/Users'),
+  commentsRouter = require('./routers/Comments')
   usersRouter = require('./routers/Users'), 
   geocoder = require('geocoder')
+
 
 const apiUrl = process.env.API_URL
 const googleApiKey = process.env.GOOGLE_API_KEY
@@ -65,6 +68,7 @@ app.use((req, res, next) => {
 
 // router
 app.use('/users', usersRouter)
+app.use('/', commentsRouter)
 
 
 // root 
