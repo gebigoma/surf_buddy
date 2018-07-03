@@ -51,8 +51,11 @@ usersRouter.patch('/profile', isLoggedIn, (req, res) => {
  })
 })
 
-// usersRouter.delete('/:id', Users.delete)
-
+usersRouter.delete('/profile', isLoggedIn, (req, res) => {
+    req.user.remove((err, removedUser) => {
+      res.redirect('/users/logout')
+    })  
+})
 ///////////////////
 
 
