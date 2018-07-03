@@ -38,6 +38,12 @@ usersRouter.get('/logout', (req, res) => {
 
 usersRouter.get('/profile/edit', isLoggedIn, (req, res) => {
  res.render('editProfile')
+}) 
+
+usersRouter.delete('/profile', isLoggedIn, (req, res) => {
+  req.user.remove((err, removedUser) => {
+    res.redirect('/users/logout')
+  })  
 })
 
 usersRouter.patch('/profile', isLoggedIn, (req, res) => {
