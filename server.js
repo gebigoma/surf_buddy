@@ -73,28 +73,19 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 // spitcast api
-app.get('/spitcast', (req, res) => {
+app.get('/spots', (req, res) => {
   console.log("Request received...")
   apiClient({ method: 'get', url: apiUrl}).then((apiResponse) => {
-    let results = ''
-    apiResponse.data.forEach((r) => {
-      const spotName = r.spot_name
-      results += `<li>
-        Spot Name: ${spotName} // 
-        <em>County Name: </em>${r.county_name} // 
-        Latitude: ${r.latitude}
-        Longitude: ${r.longitude}
-        </li>`
-    })
-    res.send(results)
-    })
+    const spots = apiResponse.data
+    res.render('spots/index', {spots: spots})
   })
+})
 
   app.get('/spit-cast-test', (req, res) => {
     res.render('spitcastTest')
   })
 
-  app.get('/search', (req, res) => {
+  app.get('/spots/search', (req, res) => {
     geocoder.geocode(req.query.location, function ( err, data ) {
       const coordinates = data.results[0].geometry.location
       // 2. using the data you get back (lat and lng), 
