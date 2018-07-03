@@ -43,7 +43,6 @@ app.use(logger('dev'))
 app.use(express.urlencoded({ extended: false }))
 app.use(methodOverride('_method'))
 
-
 //sessions 
 app.use(session({
   secret: "Poop",

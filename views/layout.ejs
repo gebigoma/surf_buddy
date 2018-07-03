@@ -13,14 +13,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.2/semantic.min.js" integrity="sha256-/P4bJXh+K+kZ7M5aKUKxAcvN8105oYfKkQ2cgwVZ8r4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../public/css/main.css">
 </head>
-<body>
-    <% if(isLoggedIn) { %>
-        <span>Logged in as:</span><%= currentUser.name %>
-        <a href='/users/profile/edit'>Edit User Info</a>
-    <% } else { %>
-        <a href='/users/login'>Log In</a>
-        <a href='/users/signup'>Sign Up</a>
-    <% } %>
+<body> 
+    <div class="ui secondary pointing menu">
+            <a href="/" class="item">Home</a> 
+            <a href="#" class="item">Spots</a> 
+            <a href="#" class="item">FAQ</a> 
+            <a href="#" class="item">About</a>
+            <a href="#" class="item">Contact</a>
+        <% if(isLoggedIn) { %>
+            <span class="active item menu right">Logged in as: 
+                <a href="/users/profile"> <%= currentUser.name %></a>
+            </span>
+            <a href='/users/profile/edit' class="item">Edit User Info</a>
+        <% } else { %>
+            <a href='/users/login' class="item">Log In</a>
+            <a href='/users/signup' class="item">Sign Up</a>
+        <% } %>    
+    </div>
     
     <div class="container">
         <%- body %> 
