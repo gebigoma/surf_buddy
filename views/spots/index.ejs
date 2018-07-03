@@ -1,7 +1,8 @@
 <h1>All da spotz</h1>
 
-<% if (spots.length > 0) %>
-<% spots.forEach(s => { %> 
-  <li><%= s.spot_name %></li>
-  <li><%= s.county_name %></li>
-<% }) %> 
+<li><%= spots[0].county_name %></li>
+<% for (var i = 1; i < spots.length; i++) { %> 
+  <% if(spots[i].county_name !== spots[i-1].county_name) { %>
+  <li><%= spots[i].county_name %></li>
+  <% } %>
+<% } %> 
