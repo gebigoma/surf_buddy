@@ -100,8 +100,9 @@ app.get('/spots', (req, res) => {
       const coordinates = data.results[0].geometry.location
       const apiUrl=`http://api.spitcast.com/api/spot-forecast/search?distance=20&longitude=${coordinates.lng}&latitude=${coordinates.lat}`
       apiClient({ method: 'get', url: apiUrl}).then((apiResponse) => {
-        res.json(apiResponse.data)
-      })
+        const spots = apiResponse.data
+        res.render('spots/search', {spots: spots})
+        })
     });
   })
 
