@@ -17,8 +17,7 @@ const
   passport = require('passport'), 
   passportConfig = require('./config/passport.js'),
   usersRouter = require('./routers/Users'),
-  commentsRouter = require('./routers/Comments')
-  usersRouter = require('./routers/Users'), 
+  commentsRouter = require('./routers/Comments'), 
   geocoder = require('geocoder')
 
 
