@@ -80,9 +80,8 @@ app.get('/faq', (req, res) => {
 app.get('/contact', (req, res) => {
   res.render('contact')
 })
-app.get('/spots', (req, res) => {
-  res.render('spots')
-})
+
+
 // spitcast api
 app.get('/spots', (req, res) => {
   console.log("Request received...")
