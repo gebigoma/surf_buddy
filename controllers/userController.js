@@ -19,6 +19,21 @@ exports.show = (req, res) => {
     })
 } 
 
+exports.edit = (req, res) => {
+    User.findById(req.params.id, (err, userFromDB) => {
+      if (err) {
+        res.render('Edit', { status: "FAIL", payload: err })
+      } else {
+        res.render('Edit', {status: "SUCCESS", payload: userFromDB })
+      }
+    })
+  }
+
+
+exports.newUser = (req, res) => {
+    res.render('new')
+}
+
 exports.create = (req, res) => {
     User.create(req.body, (err, newUser) => {
         if(err) {
@@ -29,32 +44,6 @@ exports.create = (req, res) => {
         }
     })
 }
-
-exports.delete = (req, res) => {
-    let { id } = req.params;
-    User.findByIdAndRemove(id, (err, deletedUser) => {
-        if (err){
-            res.redirect('/users');
-        }
-        else {
-            res.redirect('/users');
-        }
-    })
-}
-
-exports.newUser = (req, res) => {
-    res.render('new')
-}
-
-exports.edit = (req, res) => {
-    User.findById(req.params.id, (err, userFromDB) => {
-      if (err) {
-        res.render('Edit', { status: "FAIL", payload: err })
-      } else {
-        res.render('Edit', {status: "SUCCESS", payload: userFromDB })
-      }
-    })
-  }
   
   exports.update = (req, res) => {
     let { id } = req.params
@@ -67,3 +56,14 @@ exports.edit = (req, res) => {
     })
   }
 
+  exports.delete = (req, res) => {
+    let { id } = req.params;
+    User.findByIdAndRemove(id, (err, deletedUser) => {
+        if (err){
+            res.redirect('/users');
+        }
+        else {
+            res.redirect('/users');
+        }
+    })
+}

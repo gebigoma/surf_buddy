@@ -1,7 +1,8 @@
 const
  express = require('express'),
  passport = require('passport'),
- usersRouter = new express.Router()
+ usersRouter = new express.Router(),
+ Users = require('../controllers/userController')
  
 
 // render login view
@@ -49,6 +50,8 @@ usersRouter.patch('/profile', isLoggedIn, (req, res) => {
    res.redirect('/users/profile')
  })
 })
+
+// usersRouter.delete('/:id', Users.delete)
 
 ///////////////////
 
