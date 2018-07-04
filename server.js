@@ -106,6 +106,10 @@ app.get('/spots', (req, res) => {
     });
   })
 
+  app.get('/spots/:id', (req, res) => {
+
+  })
+
 app.listen(PORT, (err) => {
   console.log(err || `Server running on ${PORT}.`)
 })
