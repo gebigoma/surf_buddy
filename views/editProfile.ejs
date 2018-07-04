@@ -1,4 +1,4 @@
-<div class="col-sm-6 offset-md-3">
+<!-- <div class="col-sm-6 offset-md-3">
     <h1>Edit Profile</h1>
     <form method="post" action="/users/profile?_method=PATCH">
         <div class="form-group">
@@ -20,4 +20,46 @@
     </form>
     <hr>
     <p>Go back to your <a href="/users/profile">profile</a>.</p>
-</div>
+</div> -->
+
+
+<div class="ui three column vertically padded grid">
+        <div class="row"></div>
+        <div class="row"></div>
+        <div class="row"></div>
+        <div class="row"></div>
+        <div class="row"></div>
+        
+        <div class=" three column row">
+            <div class="column"></div>
+            <div class="column">
+                <h1>Edit Profile</h1>
+                <form class="ui form" method="post" action="/users/profile?_method=PATCH">
+                    <div class="field">
+                        <label>Name</label>
+                        <input type="text" name="name" placeholder="Name">
+                    </div>
+                    <div class="field">
+                        <label>Email</label>
+                        <input type="email" name="email" placeholder="Email">
+                    </div>
+                    <div class="field">
+                        <label>Password</label>
+                        <input type="password" name="password" placeholder="Password">
+                    </div>
+                    <button type="submit" class="ui button">Submit</button>
+                </form>
+            </div>
+            <div class="column"></div>
+        </div>
+        <div class=" three column row">
+            <div class="column"></div>
+            <div class="center aligned column">
+                <p>Go back to your <a href="/users/profile">profile</a>.</p>
+                <form method="post" action="/users/profile?_method=Delete">  
+                    <button type="submit" class="ui button">Delete Account</button>
+                </form>
+            </div>
+            <div class="column"></div>
+        </div>
+    </div>
