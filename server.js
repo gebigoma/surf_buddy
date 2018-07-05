@@ -20,10 +20,10 @@ const
   commentsRouter = require('./routers/Comments'), 
 
   // geocoder = require('geocoder')
-  NodeGeocoder = require('node-geocoder')
+  NodeGeocoder = require('node-geocoder'),
   // geocoder = require('geocoder'),
-  // _ = require('underscore'),
-  // slugify = require('./helpers/slugify')
+  _ = require('underscore'),
+  slugify = require('./helpers/slugify')
 
 
 
