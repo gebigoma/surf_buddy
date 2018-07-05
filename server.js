@@ -24,6 +24,7 @@ const
   slugify = require('./helpers/slugify')
 
 
+
 const apiUrl = process.env.API_URL 
 const apiSpotUrl = process.env.API_SPOT_URL
 const googleApiKey = process.env.GOOGLE_API_KEY
