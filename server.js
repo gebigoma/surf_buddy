@@ -100,7 +100,7 @@ app.get('/counties', (req, res) => {
   })
 
   app.get('/spots/search', (req, res) => {
-    geocoder.geocode(req.query.location, function ( err, data ) {
+    geocoder.geocode(`${req.query.location}, CA`, function ( err, data ) {
       const coordinates = data.results[0].geometry.location
       const apiUrl=`http://api.spitcast.com/api/spot-forecast/search?distance=20&longitude=${coordinates.lng}&latitude=${coordinates.lat}`
       apiClient({ method: 'get', url: apiUrl}).then((apiResponse) => {
