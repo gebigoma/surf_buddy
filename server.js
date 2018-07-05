@@ -18,7 +18,9 @@ const
   passportConfig = require('./config/passport.js'),
   usersRouter = require('./routers/Users'),
   commentsRouter = require('./routers/Comments'), 
-  geocoder = require('geocoder')
+  geocoder = require('geocoder'),
+  _ = require('underscore'),
+  slugify = require('./helpers/slugify')
 
 
 const apiUrl = process.env.API_URL 
@@ -91,7 +93,12 @@ app.get('/counties', (req, res) => {
   console.log("Request received...")
   apiClient({ method: 'get', url: apiUrl}).then((apiResponse) => {
     const spots = apiResponse.data
-    res.render('counties/index', {spots: spots})
+    const counties = _.uniq(spots.map((s) => {
+      return s.county_name
+    })).map((c) => {
+      return { name: c, slug: slugify(c) }
+    })
+    res.render('counties/index',  { counties })
   })
 })
 
@@ -119,6 +126,14 @@ app.get('/counties', (req, res) => {
       console.log('apiclient working!')
       res.render('spots/index', {allSpots: allSpots})
       console.log(allSpots[0].spot_name)
+    })
+  })
+
+  app.get('/counties/:slug', (req, res) => {
+    const apiUrl = `http://api.spitcast.com/api/county/spots/${req.params.slug}/`
+    apiClient({ method: 'get', url: apiUrl}).then((apiResponse) => {
+      const countySpots = apiResponse.data
+      res.render('counties/show', { countySpots })
     })
   })
 
