@@ -21,9 +21,9 @@ const
 
   // geocoder = require('geocoder')
   NodeGeocoder = require('node-geocoder')
-  geocoder = require('geocoder'),
-  _ = require('underscore'),
-  slugify = require('./helpers/slugify')
+  // geocoder = require('geocoder'),
+  // _ = require('underscore'),
+  // slugify = require('./helpers/slugify')
 
 
 
