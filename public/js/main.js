@@ -16,6 +16,7 @@ $countiesList.on("click", "li", function() {
         // loop through spots array
         // for each spot, append 
         if (spots.length === 0){
+            $modalContent.empty()
             $modalContent.append("<h1>No Spots Available</h1>")
         }
         else {

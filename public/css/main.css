@@ -6,3 +6,7 @@
     text-transform: uppercase;
     letter-spacing: 9px;
 }
+
+.counties.list {
+    cursor: pointer;
+}
