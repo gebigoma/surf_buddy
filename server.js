@@ -16,8 +16,9 @@ const
   MongoDBStore = require('connect-mongodb-session')(session), 
   passport = require('passport'), 
   passportConfig = require('./config/passport.js'),
-  usersRouter = require('./routers/Users'),
-  commentsRouter = require('./routers/Comments'), 
+  usersRouter = require('./routers/Users'), 
+  Comments = require('./models/Comment')
+  commentsRouter = require('./routers/Comments'),   
   geocoder = require('geocoder')
 
 
@@ -122,14 +123,17 @@ app.get('/counties', (req, res) => {
     })
   })
 
-  app.get('/spots/:spot_id', (req, res) => {
+  app.get('/spots/:spot_id', (req, res) => { 
     const apiUrl = `http://api.spitcast.com/api/spot/all`
     apiClient({ method: 'get', url: apiUrl}).then((apiResponse) => {
       const allSpots = apiResponse.data
       const spot = allSpots.find((s) => {
         return s.spot_id === Number(req.params.spot_id)
       })
-      res.render('spots/show', { spot: spot })
+      Comments.find({ spot_id: spot.spot_id }).populate('_by').exec((err, comments) => {
+        if (err) throw err;
+        res.render('spots/show', { spot, comments })
+      })
     })
   })
 

@@ -1,4 +1,21 @@
 
-<h1>HELLO</h1>
-<h1><%= spot.spot_name %></h1>
+<h1><%= spot.spot_name %></h1> 
+<form method="post" action="<%= spot.spot_id %>/comments">
+    <input type="text" name="title" placeholder="title">
+    <div>
+        <input type="text" name="body" placeholder="body" style="height:100px; width:500px; text-align:center;">
+    </div>
+    <button type="submit">Submit</button> 
+</form>    
+
+<h1>Comments:</h1>
+    <% comments.forEach((c) => { %>
+        <div><h3><%=c.title %></h3></div> 
+        <div><p><%=c.body %></p></div> 
+        <div><p>says <%=c._by.name %></p></div>
+    <% }) %>
+
+
+
+
 
