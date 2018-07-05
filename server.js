@@ -87,11 +87,11 @@ app.get('/contact', (req, res) => {
 
 
 // spitcast api
-app.get('/spots', (req, res) => {
+app.get('/counties', (req, res) => {
   console.log("Request received...")
   apiClient({ method: 'get', url: apiUrl}).then((apiResponse) => {
     const spots = apiResponse.data
-    res.render('spots/index', {spots: spots})
+    res.render('counties/index', {spots: spots})
   })
 })
 
@@ -108,6 +108,29 @@ app.get('/spots', (req, res) => {
         res.render('spots/search', {spots: spots})
         })
     });
+  })
+
+  app.get('/spots', (req, res) => {
+    console.log('hello')
+    const apiUrl = `http://api.spitcast.com/api/spot/all`
+    console.log('api!')
+    apiClient({ method: 'get', url: apiUrl }).then((apiResponse) => {
+      const allSpots = apiResponse.data
+      console.log('apiclient working!')
+      res.render('spots/index', {allSpots: allSpots})
+      console.log(allSpots[0].spot_name)
+    })
+  })
+
+  app.get('/spots/:spot_id', (req, res) => {
+    const apiUrl = `http://api.spitcast.com/api/spot/all`
+    apiClient({ method: 'get', url: apiUrl}).then((apiResponse) => {
+      const allSpots = apiResponse.data
+      const spot = allSpots.find((s) => {
+        return s.spot_id === Number(req.params.spot_id)
+      })
+      res.render('spots/show', { spot: spot })
+    })
   })
 
 app.listen(PORT, (err) => {

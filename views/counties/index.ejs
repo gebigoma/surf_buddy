@@ -1,0 +1,22 @@
+<h1 class="ui huge header center aligned">Counties</h1>
+
+
+<div class="ui three column padded grid">
+    <div class="row">
+        <div class="column">
+            <div class="ui segment center aligned">
+              <h4 class="ui header center aligned"><%= spots[0].county_name %></h4>
+            </div>
+        </div>
+        <% for (var i = 1; i < spots.length; i++) { %> 
+          <% if(spots[i].county_name !== spots[i-1].county_name) { %>
+            <div class="column">
+              <div class="ui segment center aligned">
+                  <h4 class="ui header center aligned"><%= spots[i].county_name %></h4>
+              </div>
+            </div>
+          <% } %>
+        <% } %> 
+    </div>
+
+</div>
