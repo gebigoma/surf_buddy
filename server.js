@@ -21,7 +21,8 @@ const
   geocoder = require('geocoder')
 
 
-const apiUrl = process.env.API_URL
+const apiUrl = process.env.API_URL 
+const apiSpotUrl = process.env.API_SPOT_URL
 const googleApiKey = process.env.GOOGLE_API_KEY
 
 PORT = process.env.PORT,
