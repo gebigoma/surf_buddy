@@ -16,7 +16,6 @@ const
   MongoDBStore = require('connect-mongodb-session')(session), 
   passport = require('passport'), 
   passportConfig = require('./config/passport.js'),
-  commentsRouter = require('./routers/Comments'),   
   usersRouter = require('./routers/Users'),
   commentsRouter = require('./routers/Comments'), 
 
