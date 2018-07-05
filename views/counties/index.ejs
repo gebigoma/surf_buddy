@@ -1,7 +1,7 @@
 
 <ul class="counties list">
     <% counties.forEach((c) => { %>
-      <li id="<%= c.slug %>"><%= c.name %></li>
+      <li id="<%= c.slug %>"><a href"#"><%= c.name %></a></li>
     <% }) %>
 </ul>
 
@@ -15,7 +15,6 @@
   
   </div>
   <div class="actions">
-    <div class="ui button">Cancel</div>
-    <div class="ui button">OK</div>
+    
   </div>
 </div>
