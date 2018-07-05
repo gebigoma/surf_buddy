@@ -1,0 +1,8 @@
+.list {
+    list-style: none;
+    text-align: center;
+    font-size: 42px;
+    line-height: 70px;
+    text-transform: uppercase;
+    letter-spacing: 9px;
+}

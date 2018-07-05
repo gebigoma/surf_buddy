@@ -1,6 +1,6 @@
-<h1 class="ui huge header center aligned">Counties</h1>
 
-
-<% counties.forEach((c) => { %>
-  <li><a href="/counties/<%= c.slug %>"><%= c.name %></a></li>
-<% }) %>
+<ul class="list">
+    <% counties.forEach((c) => { %>
+      <li><a href="/counties/<%= c.slug %>"><%= c.name %></a></li>
+    <% }) %>
+</ul>
