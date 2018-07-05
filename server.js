@@ -115,13 +115,20 @@ app.get('/counties', (req, res) => {
   })
 
   app.get('/spots/search', (req, res) => {
-    geocoder.geocode(`${req.query.location}, CA`, function ( err, data ) {
+    // geocoder.geocode(`${req.query.location}, CA`, function ( err, data ) {
+    geocoder.geocode(`${req.query.location}, CA`, function ( err, data ) {  
       let { latitude, longitude  } = data[0];
+      console.log(data)
       const apiUrl=`http://api.spitcast.com/api/spot-forecast/search?distance=20&longitude=${longitude}&latitude=${latitude}`
       apiClient({ method: 'get', url: apiUrl}).then((apiResponse) => {
         const spots = apiResponse.data
-        res.render('spots/search', {spots: spots})
-        })
+        console.log(spots.length)
+        if (spots.length > 0) {
+          res.render('spots/search', {spots: spots})
+        } else {
+          res.render('spots/error')
+        }
+      })
     });
   })
 
