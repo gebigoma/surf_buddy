@@ -4,7 +4,7 @@ const
     commentsRouter = new express.Router(),
     commentController = require('../controllers/commentController') 
 
-commentsRouter.post('/spots/:spotId/comments', isLoggedIn,  commentController.create)
+commentsRouter.post('/spots/:spot_id/comments', isLoggedIn,  commentController.create)
 
 commentsRouter.delete('/comments/:id', isLoggedIn, commentController.destroy)
 

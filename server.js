@@ -16,15 +16,14 @@ const
   MongoDBStore = require('connect-mongodb-session')(session), 
   passport = require('passport'), 
   passportConfig = require('./config/passport.js'),
+  commentsRouter = require('./routers/Comments'),   
   usersRouter = require('./routers/Users'),
   commentsRouter = require('./routers/Comments'), 
 
-  // geocoder = require('geocoder')
+
   NodeGeocoder = require('node-geocoder'),
-  // geocoder = require('geocoder'),
   _ = require('underscore'),
   slugify = require('./helpers/slugify')
-
 
 
 const apiUrl = process.env.API_URL 
@@ -169,7 +168,10 @@ app.get('/counties', (req, res) => {
       const spot = allSpots.find((s) => {
         return s.spot_id === Number(req.params.spot_id)
       })
-      res.render('spots/show', { spot: spot })
+      Comments.find({ spot_id: spot.spot_id }).populate('_by').exec((err, comments) => {
+        if (err) throw err;
+        res.render('spots/show', { spot, comments })
+      })
     })
   })
 
