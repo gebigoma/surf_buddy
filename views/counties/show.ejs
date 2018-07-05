@@ -1,0 +1,7 @@
+<% if(countySpots.length === 0) { %> 
+    <h1>No Spots Available</h1>
+<% } %>
+<% for(var i = 0; i < countySpots.length; i++) { %>
+
+    <li><a href="/spots/<%= countySpots[i].spot_id %>"><%= countySpots[i].spot_name %></a></li>
+<% } %>
