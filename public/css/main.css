@@ -1,3 +1,12 @@
+body, html {
+    height: 100%
+}
+
+#hero {
+    width: 100%;
+    max-width: 1000px;
+}
+
 .list {
     list-style: none;
     text-align: center;
@@ -6,3 +15,57 @@
     text-transform: uppercase;
     letter-spacing: 9px;
 }
+
+/* #main-image { */
+    /* background-image: url("/images/Goofy.png"); */
+    /* height: 100%;  */
+    /* background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+} */
+
+/* .middle{
+    height: 50vh;
+  }
+  .middle-parent{
+      position: relative;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+  } */
+
+  .center {
+      margin: auto;
+  }
+
+  .navbar {
+      margin-bottom: 0px !important;
+  }
+
+.counties.list {
+    cursor: pointer;
+}
+
+.addcomment {
+    list-style: none;
+    text-align: center;
+    font-size: 21px;
+    line-height: 35px;
+    text-transform: uppercase;
+    letter-spacing: 4.5px;
+}
+
+.commenthead {
+    list-style: none;
+    text-align: center;
+    font-size: 15.75px;
+    line-height: 26.25px;
+    text-transform: uppercase;
+    letter-spacing: 3.375px;
+}
+
+.margin {
+    margin: 20px;
+}
+

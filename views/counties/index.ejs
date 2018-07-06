@@ -1,6 +1,20 @@
 
-<ul class="list">
+<ul class="counties list">
     <% counties.forEach((c) => { %>
-      <li><a href="/counties/<%= c.slug %>"><%= c.name %></a></li>
+      <li id="<%= c.slug %>"><a href"#"><%= c.name %></a></li>
     <% }) %>
 </ul>
+
+<div class="ui modal">
+  <i class="close icon"></i>
+  <div class="header">
+    
+  </div>
+  <div class="content list">
+    
+  
+  </div>
+  <div class="actions">
+    
+  </div>
+</div>

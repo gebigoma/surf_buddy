@@ -148,16 +148,18 @@ app.get('/counties', (req, res) => {
     apiClient({ method: 'get', url: apiUrl }).then((apiResponse) => {
       const allSpots = apiResponse.data
       console.log('apiclient working!')
-      res.render('spots/index', {allSpots: allSpots})
+      // res.render('spots/index', {allSpots: allSpots})
       console.log(allSpots[0].spot_name)
+      res.redirect('/counties')
     })
   })
 
-  app.get('/counties/:slug', (req, res) => {
+  app.get('/api/counties/:slug', (req, res) => {
     const apiUrl = `http://api.spitcast.com/api/county/spots/${req.params.slug}/`
     apiClient({ method: 'get', url: apiUrl}).then((apiResponse) => {
       const countySpots = apiResponse.data
-      res.render('counties/show', { countySpots })
+      // res.render('counties/show', { countySpots })
+      res.json(countySpots)
     })
   })
 
