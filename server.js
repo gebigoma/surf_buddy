@@ -20,10 +20,9 @@ const
   commentsRouter = require('./routers/Comments'), 
   Comments = require('./models/Comment'),
   NodeGeocoder = require('node-geocoder'),
+  moment = require('moment'),
   _ = require('underscore'),
   slugify = require('./helpers/slugify')
-
-
 
 const apiUrl = process.env.API_URL 
 const apiSpotUrl = process.env.API_SPOT_URL
@@ -170,9 +169,9 @@ app.get('/counties', (req, res) => {
       const spot = allSpots.find((s) => {
         return s.spot_id === Number(req.params.spot_id)
       })
-      Comments.find({ spot_id: spot.spot_id }).populate('_by').exec((err, comments) => {
+      Comments.find({ spot_id: spot.spot_id }).populate('_by').sort({date: -1}).exec((err, comments) => {
         if (err) throw err;
-        res.render('spots/show', { spot, comments })
+        res.render('spots/show', { spot, comments, moment })
       })
     })
   })

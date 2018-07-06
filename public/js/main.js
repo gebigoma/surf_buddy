@@ -8,6 +8,7 @@ var $addComment = $('.addcomment')
 // var $commentModalHeader = $('.small.modal .comment')
 // var $comme
 
+var timeAgo = require('time-ago')
 
 $countiesList.on("click", "li", function() {
     var slug = $(this).attr("id")
