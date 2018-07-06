@@ -2,6 +2,11 @@ body, html {
     height: 100%
 }
 
+#hero {
+    width: 100%;
+    max-width: 1000px;
+}
+
 .list {
     list-style: none;
     text-align: center;
@@ -11,13 +16,13 @@ body, html {
     letter-spacing: 9px;
 }
 
-#main-image {
+/* #main-image { */
     /* background-image: url("/images/Goofy.png"); */
     /* height: 100%;  */
-    background-position: center;
+    /* background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-}
+} */
 
 /* .middle{
     height: 50vh;
