@@ -175,7 +175,7 @@ app.get('/counties', (req, res) => {
       apiClient({ method: 'get', url: forecastApiUrl}).then((forecastApiResponse) => {
         const forecast = forecastApiResponse.data
         const hours = new Date().getHours()
-        const amOrPm = hours > 12 ? "PM" : "AM"
+        const amOrPm = hours > 11 ? "PM" : "AM"
         const formattedHours = ((hours + 11) % 12 + 1) + amOrPm
         const currentConditions = forecast.find((h) => {
           return h.hour === formattedHours

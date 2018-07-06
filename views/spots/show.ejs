@@ -2,19 +2,13 @@
 <h1 class="list"><%= spot.spot_name %></h1> 
 
 <p class="date"><%= currentConditions.date %>, <%= currentConditions.hour %></p>
-<!-- <h2>Current Condition</h2>
-<p>Size: <%= Number(currentConditions.size)-1 %> to <%= Number(currentConditions.size) %> ft</p>
-<p>Swell Rating: <%= currentConditions.shape_detail.swell %></p>
-<p>Tide Rating: <%= currentConditions.shape_detail.tide %></p>
-<p>Wind Rating: <%= currentConditions.shape_detail.wind %></p>
- -->
 
 
 <div class="ui grid">
-    <div class="five wide column centered">
+    <div class="six wide column centered">
         <div class="ui raised card fluid card">
-            <div class="content">
-                <div class="header left aligned">Current Conditions</div>
+            <div class="content margin-box">
+                <div class="header left aligned">Current Conditions:</div>
                 <div class="description">
                     <p class="left aligned">Size: <%= Number(currentConditions.size)-1 %> to <%= Number(currentConditions.size) %> ft</p>
                     <p class="left aligned">Swell Rating: <%= currentConditions.shape_detail.swell %></p>
