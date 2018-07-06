@@ -1,11 +1,40 @@
 
 <h1 class="list"><%= spot.spot_name %></h1> 
 
+<p class="date"><%= currentConditions.date %>, <%= currentConditions.hour %></p>
+<!-- <h2>Current Condition</h2>
+<p>Size: <%= Number(currentConditions.size)-1 %> to <%= Number(currentConditions.size) %> ft</p>
+<p>Swell Rating: <%= currentConditions.shape_detail.swell %></p>
+<p>Tide Rating: <%= currentConditions.shape_detail.tide %></p>
+<p>Wind Rating: <%= currentConditions.shape_detail.wind %></p>
+ -->
+
+
+<div class="ui grid">
+    <div class="five wide column centered">
+        <div class="ui raised card fluid card">
+            <div class="content">
+                <div class="header left aligned">Current Conditions</div>
+                <div class="description">
+                    <p class="left aligned">Size: <%= Number(currentConditions.size)-1 %> to <%= Number(currentConditions.size) %> ft</p>
+                    <p class="left aligned">Swell Rating: <%= currentConditions.shape_detail.swell %></p>
+                    <p class="left aligned">Tide Rating: <%= currentConditions.shape_detail.tide %></p>
+                    <p class="left aligned">Wind Rating: <%= currentConditions.shape_detail.wind %></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+
 <p class="addcomment"><a href='#'>Add Comment</a></p>  
 
 <div class="ui grid">
     <div class="six wide column centered">
         <% comments.forEach((c) => { %>
+<<<<<<< HEAD
         <div class="ui raised card fluid card">
          <div class="content">
             <div class="header"><%=c.title %></div>
@@ -18,6 +47,13 @@
             <div class="left floated author">                
                 <% if (currentUser.name === c._by.name) { %>
                 <form method="post" action="/comments/<%= c.id %>?_method=delete">
+=======
+        <li><%=c.title %></li> 
+        <li><%=c.body %></li> 
+        <p>- <%=c._by.name %></p>
+        <% if (currentUser.name === c._by.name) { %>
+            <form method="post" action="/comments/<%= c.id %>?_method=delete"> 
+>>>>>>> 0af3a6106a2da8f5d177364f835373165025ac28
                 <button type="submit">Delete</button>
                 </form>
                 <% } %>

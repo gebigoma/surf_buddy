@@ -25,10 +25,7 @@
             <% if(isLoggedIn) { %>
                 <div class="right menu">
                     <div class="ui item">
-                        <a href="/users/profile"> <%= currentUser.name %></a>
-                    </div>
-                    <div class="ui item">
-                        <a href='/users/profile/edit'>Settings</a>
+                        <a href="/users/profile/edit"> <%= currentUser.name %></a>
                     </div>
                     <div class="ui item">
                         <a href="/users/logout">Log Out</a>

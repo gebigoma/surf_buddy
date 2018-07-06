@@ -1,6 +1,5 @@
-<h1>All da spotz searchez</h1>
-
-<% if (spots.length > 0) %>
-<% spots.forEach(s => { %> 
-  <li><a href="/spots/<%= s.spot_id%>"><%= s.spot_name %></a></li>
-<% }) %> 
+<ul class="counties list">
+    <% spots.forEach((s) => { %>
+      <li><a href="/spots/<%= s.spot_id%>"><%= s.spot_name %></a></li>
+    <% }) %>
+</ul>
