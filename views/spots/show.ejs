@@ -41,7 +41,7 @@
                 <% if (currentUser.name === c._by.name) { %>
                 <form method="post" action="/comments/<%= c.id %>?_method=delete">
 
-                <button type="submit">Delete</button>
+                <button class= "delete-button" type="submit">Delete</button>
                 </form>
                 <% } %>
             </div>
