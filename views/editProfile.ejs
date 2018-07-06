@@ -24,16 +24,22 @@
 
 
 <div class="ui three column vertically padded grid">
+        
         <div class="row"></div>
-        <div class="row"></div>
-        <div class="row"></div>
-        <div class="row"></div>
+        
+        <div class="three column row">
+                <div class="column"></div>
+                <div class="column">
+                <h1 class="list">Hello <%= currentUser.name %>!</h1>
+                </div>
+                <div class="column"></div>
+        </div>
         <div class="row"></div>
         
         <div class=" three column row">
             <div class="column"></div>
             <div class="column">
-                <h1>Edit Profile</h1>
+                <h2>Edit Profile</h2>
                 <form class="ui form" method="post" action="/users/profile?_method=PATCH">
                     <div class="field">
                         <label>Name</label>
