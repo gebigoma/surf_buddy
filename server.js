@@ -165,14 +165,26 @@ app.get('/counties', (req, res) => {
 
   app.get('/spots/:spot_id', (req, res) => {
     const apiUrl = `http://api.spitcast.com/api/spot/all`
+    const forecastApiUrl = `http://api.spitcast.com/api/spot/forecast/${req.params.spot_id}`
     apiClient({ method: 'get', url: apiUrl}).then((apiResponse) => {
       const allSpots = apiResponse.data
       const spot = allSpots.find((s) => {
         return s.spot_id === Number(req.params.spot_id)
       })
-      Comments.find({ spot_id: spot.spot_id }).populate('_by').exec((err, comments) => {
-        if (err) throw err;
-        res.render('spots/show', { spot, comments })
+      apiClient({ method: 'get', url: forecastApiUrl}).then((forecastApiResponse) => {
+
+        const forecast = forecastApiResponse.data
+        const hours = new Date().getHours()
+        const amOrPm = hours > 12 ? "PM" : "AM"
+        const formattedHours = ((hours + 11) % 12 + 1) + amOrPm
+        const currentConditions = forecast.find((h) => {
+          return h.hour === formattedHours
+        })
+
+        Comments.find({ spot_id: spot.spot_id }).populate('_by').exec((err, comments) => {
+          if (err) throw err;
+          res.render('spots/show', { spot, comments, currentConditions })
+        })
       })
     })
   })
