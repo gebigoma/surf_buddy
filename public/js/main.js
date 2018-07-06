@@ -4,6 +4,11 @@ var $countiesList = $('.counties.list')
 var $modalContent = $('.ui.modal .content')
 var $modalHeader = $('.ui.modal .header')
 
+var $addComment = $('.addcomment')
+// var $commentModalHeader = $('.small.modal .comment')
+// var $comme
+
+
 $countiesList.on("click", "li", function() {
     var slug = $(this).attr("id")
     apiClient({ method: "get", url: `/api/counties/${slug}`}).then((apiResponse) => {
@@ -29,4 +34,8 @@ $countiesList.on("click", "li", function() {
         
         $('.ui.modal').modal('show')
     })
+})
+
+$addComment.on("click", function() {
+    $('.tiny.modal').modal('show')
 })

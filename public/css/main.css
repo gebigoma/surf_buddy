@@ -47,3 +47,25 @@ body, html {
     cursor: pointer;
 }
 
+.addcomment {
+    list-style: none;
+    text-align: center;
+    font-size: 21px;
+    line-height: 35px;
+    text-transform: uppercase;
+    letter-spacing: 4.5px;
+}
+
+.commenthead {
+    list-style: none;
+    text-align: center;
+    font-size: 15.75px;
+    line-height: 26.25px;
+    text-transform: uppercase;
+    letter-spacing: 3.375px;
+}
+
+.margin {
+    margin: 20px;
+}
+

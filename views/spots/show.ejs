@@ -1,26 +1,43 @@
 
-<h1><%= spot.spot_name %></h1> 
-<form method="post" action="<%= spot.spot_id %>/comments">
-    <input type="text" name="title" placeholder="title">
-    <div>
-        <input type="text" name="body" placeholder="body" style="height:100px; width:500px; text-align:center;">
-    </div>
-    <button type="submit">Submit</button> 
-</form>    
+<h1 class="list"><%= spot.spot_name %></h1> 
 
-<h1>Comments:</h1>
-    <% comments.forEach((c) => { %>
-        <div><h3><%=c.title %></h3></div> 
-        <div><p><%=c.body %></p></div> 
-        <div><p>says <%=c._by.name %></p></div> 
+<p class="addcomment"><a href='#'>Add Comment</a></p>  
+
+<h1 class="commenthead">Comments:</h1>
+<ul class="list">
+    <li>
+        <% comments.forEach((c) => { %>
+        <li><%=c.title %></li> 
+        <li><%=c.body %></li> 
+        ><p>- <%=c._by.name %></p>
         <% if (currentUser.name === c._by.name) { %>
             <form method="post" action="/comments/<%= c.id %>?_method=delete"> 
                 <button type="submit">Delete</button>
             </form>
         <% } %>
     <% }) %>
+    </li>
+</ul>
 
 
-
-
-
+<div class="tiny ui modal comment">
+    <i class="close icon"></i>
+    <div class="header">
+        <h3>Add Comment</h3>
+    </div>
+    <div class="ui padded">
+        <form class="ui form margin" method="post" action="<%= spot.spot_id %>/comments">
+                <div class="field">
+                    <label></label>
+                    <input type="text" name="title" placeholder="Title">
+                </div>
+                <div class="field">
+                    <label></label>
+                    <textarea type="text" name="body" placeholder="Body"></textarea>
+                </div>
+                <div class="field">
+                    <button type="submit" class="ui button">Submit</button>
+                </div>
+        </form>
+    </div>
+</div>
