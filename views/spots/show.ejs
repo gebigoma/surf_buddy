@@ -34,7 +34,6 @@
 <div class="ui grid">
     <div class="six wide column centered">
         <% comments.forEach((c) => { %>
-<<<<<<< HEAD
         <div class="ui raised card fluid card">
          <div class="content">
             <div class="header"><%=c.title %></div>
@@ -47,13 +46,7 @@
             <div class="left floated author">                
                 <% if (currentUser.name === c._by.name) { %>
                 <form method="post" action="/comments/<%= c.id %>?_method=delete">
-=======
-        <li><%=c.title %></li> 
-        <li><%=c.body %></li> 
-        <p>- <%=c._by.name %></p>
-        <% if (currentUser.name === c._by.name) { %>
-            <form method="post" action="/comments/<%= c.id %>?_method=delete"> 
->>>>>>> 0af3a6106a2da8f5d177364f835373165025ac28
+
                 <button type="submit">Delete</button>
                 </form>
                 <% } %>
