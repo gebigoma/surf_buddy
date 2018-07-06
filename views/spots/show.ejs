@@ -9,7 +9,7 @@
         <% comments.forEach((c) => { %>
         <li><%=c.title %></li> 
         <li><%=c.body %></li> 
-        ><p>- <%=c._by.name %></p>
+        <p>- <%=c._by.name %></p>
         <% if (currentUser.name === c._by.name) { %>
             <form method="post" action="/comments/<%= c.id %>?_method=delete"> 
                 <button type="submit">Delete</button>
