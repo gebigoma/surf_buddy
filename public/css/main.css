@@ -1,3 +1,7 @@
+body, html {
+    height: 100%
+}
+
 .list {
     list-style: none;
     text-align: center;
@@ -6,3 +10,30 @@
     text-transform: uppercase;
     letter-spacing: 9px;
 }
+
+#main-image {
+    /* background-image: url("/images/Goofy.png"); */
+    /* height: 100%;  */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* .middle{
+    height: 50vh;
+  }
+  .middle-parent{
+      position: relative;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+  } */
+
+  .center {
+      margin: auto;
+  }
+
+  .navbar {
+      margin-bottom: 0px !important;
+  }
