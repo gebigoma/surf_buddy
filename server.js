@@ -153,11 +153,12 @@ app.get('/counties', (req, res) => {
     })
   })
 
-  app.get('/counties/:slug', (req, res) => {
+  app.get('/api/counties/:slug', (req, res) => {
     const apiUrl = `http://api.spitcast.com/api/county/spots/${req.params.slug}/`
     apiClient({ method: 'get', url: apiUrl}).then((apiResponse) => {
       const countySpots = apiResponse.data
-      res.render('counties/show', { countySpots })
+      // res.render('counties/show', { countySpots })
+      res.json(countySpots)
     })
   })
 

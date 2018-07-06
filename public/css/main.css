@@ -37,3 +37,8 @@ body, html {
   .navbar {
       margin-bottom: 0px !important;
   }
+
+.counties.list {
+    cursor: pointer;
+}
+
