@@ -148,8 +148,9 @@ app.get('/counties', (req, res) => {
     apiClient({ method: 'get', url: apiUrl }).then((apiResponse) => {
       const allSpots = apiResponse.data
       console.log('apiclient working!')
-      res.render('spots/index', {allSpots: allSpots})
+      // res.render('spots/index', {allSpots: allSpots})
       console.log(allSpots[0].spot_name)
+      res.redirect('/counties')
     })
   })
 
