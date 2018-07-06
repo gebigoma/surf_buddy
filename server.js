@@ -170,13 +170,9 @@ app.get('/counties', (req, res) => {
       const spot = allSpots.find((s) => {
         return s.spot_id === Number(req.params.spot_id)
       })
-<<<<<<< HEAD
-      Comments.find({ spot_id: spot.spot_id }).populate('_by').sort({date: -1}).exec((err, comments) => {
-        if (err) throw err;
-        res.render('spots/show', { spot, comments, moment })
-=======
-      apiClient({ method: 'get', url: forecastApiUrl}).then((forecastApiResponse) => {
 
+
+      apiClient({ method: 'get', url: forecastApiUrl}).then((forecastApiResponse) => {
         const forecast = forecastApiResponse.data
         const hours = new Date().getHours()
         const amOrPm = hours > 12 ? "PM" : "AM"
@@ -185,11 +181,10 @@ app.get('/counties', (req, res) => {
           return h.hour === formattedHours
         })
 
-        Comments.find({ spot_id: spot.spot_id }).populate('_by').exec((err, comments) => {
+        Comments.find({ spot_id: spot.spot_id }).populate('_by').sort({date: -1}).exec((err, comments) => {
           if (err) throw err;
-          res.render('spots/show', { spot, comments, currentConditions })
+          res.render('spots/show', { spot, comments, currentConditions, moment })
         })
->>>>>>> 0af3a6106a2da8f5d177364f835373165025ac28
       })
     })
   })
