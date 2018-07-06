@@ -16,6 +16,15 @@ body, html {
     letter-spacing: 9px;
 }
 
+.date {
+    list-style: none;
+    text-align: center;
+    font-size: 21px;
+    line-height: 35px;
+    text-transform: uppercase;
+    letter-spacing: 4.5px;
+}
+
 /* #main-image { */
     /* background-image: url("/images/Goofy.png"); */
     /* height: 100%;  */
